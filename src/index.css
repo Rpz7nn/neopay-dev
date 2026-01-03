@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 150 100% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 150 100% 50%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 150 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom colors for feature cards - all primary green */
+    --green-accent: 150 100% 50%;
+    --orange-accent: 150 100% 50%;
+    --red-accent: 0 84% 60%;
+
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 150 100% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 16%;
+    --sidebar-ring: 150 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent;
+  }
+
+  .card-gradient {
+    @apply bg-gradient-to-b from-card to-background;
+  }
+
+  .glow-effect {
+    box-shadow: 0 0 60px -12px hsl(var(--primary) / 0.3);
+  }
+
+  .feature-card {
+    @apply relative overflow-hidden rounded-xl border border-border/50 bg-card/50 p-6 backdrop-blur-sm transition-all duration-300;
+  }
+
+  .feature-card:hover {
+    @apply border-border bg-card/80;
+  }
+
+  .feature-card-green {
+    @apply feature-card;
+    border-left: 2px solid hsl(var(--green-accent));
+  }
+
+  .feature-card-orange {
+    @apply feature-card;
+    border-left: 2px solid hsl(var(--orange-accent));
+  }
+
+  .feature-card-red {
+    @apply feature-card;
+    border-left: 2px solid hsl(var(--red-accent));
+  }
+
+  .section-badge {
+    @apply inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary;
+  }
+
+  .coupon-badge {
+    @apply inline-flex items-center gap-2 rounded-full border border-border/50 bg-secondary/50 px-6 py-2 text-sm backdrop-blur-sm;
+  }
+
+  .icon-box {
+    @apply flex h-12 w-12 items-center justify-center rounded-xl bg-secondary;
+  }
+
+  .icon-box-orange {
+    @apply icon-box bg-primary/10 text-primary;
+  }
+
+  .icon-box-green {
+    @apply icon-box bg-green-500/10 text-green-400;
+  }
+
+  .icon-box-red {
+    @apply icon-box bg-red-500/10 text-red-400;
+  }
+
+  .logo-scroll {
+    @apply flex animate-scroll gap-8;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Hide scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
